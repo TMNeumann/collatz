@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>HNSA - Relatórios</title>
+	<meta charset="utf-8">
+	<style>
+		* {
+			margin: 0;
+			padding: 0;
+			box-sizing: border-box;
+			list-style: none;
+			text-decoration: none;
+			color: #000;
+		}
+		ul {
+			width: 100vw;
+			height: 100vh;
+			padding: 3em 1em;
+			text-align: left;
+			display: flex;
+		}
+		li {
+			width: 6px;
+			margin: 4px;
+			background: blueviolet;
+			position: relative;
+		}
+		p {
+			font-size: .7em;
+			transform: rotate(-90deg);
+			margin-top: -12px;
+			letter-spacing: 1.5px;
+		}
+	</style>
+</head>
+<body>
+	<ul class="graph">
+
+	</ul>
+<script>
+	const graph = document.querySelector('.graph');
+	let spot;
+	function collatz () {
+
+		let result;
+		let max = 500//000000000000000000000000000000000
+		let n = Math.floor(Math.random() * max);
+		let colector = [n]
+			console.log('start =====> ' + n)
+			spot = document.createElement('li');
+			text = document.createElement('p');
+			text.innerText = n;
+			spot.appendChild(text);
+			if(n > 1000) { graph.style.height = '10vh'}
+			else {scale = 10}
+			spot.style.height = n / 10 + '%';
+			graph.appendChild(spot);
+			var teste = setTimeout(() => {
+				while (n > 2){
+					if(n % 2 != 0){
+							n = 3 * n + 1;
+							colector.push(n);
+							spot = document.createElement('li');
+							text = document.createElement('p');
+							text.innerText = n;
+							spot.appendChild(text);
+							spot.style.height = n / 10 + '%';
+							graph.appendChild(spot);
+						//}, 50)
+					}
+					if(n % 2 == 0){					
+						//var teste = ssetTimeout(() => {
+							n = n / 2;
+							colector.push(n);
+							spot = document.createElement('li');
+							text = document.createElement('p');
+							text.innerText = n;
+							spot.appendChild(text);
+							spot.style.height = n / 10 + '%';
+							graph.appendChild(spot);
+						
+					}
+					
+				}
+			}, 50)		
+			
+		console.log(colector)
+	}
+	collatz()
+</script>
+</body>
+</html>
