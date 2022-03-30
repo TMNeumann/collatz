@@ -9,13 +9,22 @@
 			padding: 0;
 			box-sizing: border-box;
 			list-style: none;
-			text-decoration: none;
 			color: #000;
+            max-width: 100%;
 		}
+        body {
+            padding: 1em;
+        }
+        .text {
+            font-size: 0.8em;
+            transform: none;
+            margin: 0.5em 0;
+            font-family: robboto sans sans-serif;
+        }
 		ul {
 			width: 100vw;
 			height: 100vh;
-			padding: 3em 1em;
+			padding: 3em 0;
 			text-align: left;
 			display: flex;
 		}
@@ -34,14 +43,16 @@
 	</style>
 </head>
 <body>
-	<ul class="graph">
-
+    <p class="text">The Collatz conjecture in mathematics asks whether repeating two simple arithmetic operations will eventually transform every positive integer into one. It concerns sequences of integers in which each term is obtained from the previous term as follows: if the previous term is even, the next term is one half of the previous term. If the previous term is odd, the next term is 3 times the previous term plus 1. The conjecture is that these sequences always reach 1, no matter which positive integer is chosen to start the sequence.</p>
+	<p class="text">Reference <a href="https://en.wikipedia.org/wiki/Collatz_conjecture">here</a></p>
+    <button onclick="collatz()">Run</button>
+    <ul class="graph">
 	</ul>
 <script>
 	const graph = document.querySelector('.graph');
 	let spot;
 	function collatz () {
-
+        graph.innerHTML = ''
 		let result;
 		let max = 500//000000000000000000000000000000000
 		let n = Math.floor(Math.random() * max);
